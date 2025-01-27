@@ -65,7 +65,7 @@ st.title("Stock Price Predictor")
 st.write("Predict whether a stock's price will increase or decrease tomorrow.")
 
 # User inputs
-stock_ticker = st.text_input("Enter Stock Ticker (e.g., AAPL, ^GSPC):", value="AAPL")
+stock_ticker = st.text_input("Enter Stock Ticker:", value="AAPL")
 start_date = st.date_input("Start Date:", value=datetime(2000, 1, 1))
 end_date = st.date_input("End Date:", value=datetime.today())
 
