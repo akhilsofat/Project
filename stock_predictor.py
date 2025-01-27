@@ -37,7 +37,28 @@ def predict_next_day(data, model):
     latest_data = data.iloc[-1]
     features = latest_data[predictors].values.reshape(1, -1)
     prediction = model.predict(features)[0]
-    return "Increase" if prediction == 1 else "Decrease"
+
+    # Display the prediction with a colored box
+    if prediction == 1:
+        st.markdown(
+            f"""
+            <div style="background-color: #d4edda; padding: 20px; border-radius: 5px; border: 1px solid #c3e6cb;">
+                <h3 style="color: #155724; text-align: center;">Predicted: Increase 📈</h3>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        return "Increase"
+    else:
+        st.markdown(
+            f"""
+            <div style="background-color: #f8d7da; padding: 20px; border-radius: 5px; border: 1px solid #f5c6cb;">
+                <h3 style="color: #721c24; text-align: center;">Predicted: Decrease 📉</h3>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        return "Decrease"
 
 # Streamlit UI
 st.title("Stock Price Predictor")
